@@ -1,17 +1,15 @@
-def sort_names():
+def sort_names(input_file_name: str, output_file_name: str):
     """
     Open file data/unsorted_names.txt in data folder.
     Sort the names and write them to a new file called sorted_names.txt.
     Each name should start with a new line
     """
-    file = open('./data/unsorted_names.txt', 'r')
-    names = sorted(file.readlines())
-    file.close()
-    file = open('./data/sorted_names.txt', 'w')
-    for name in names:
-        file.write(name)
-    file.close()
+    with open(input_file_name, 'r') as input_file, open(output_file_name, 'w') as output_file:
+        names = sorted(input_file.readlines())
+        for name in names:
+            output_file.write(name)
+
 
 
 if __name__ == '__main__':
-    sort_names()
+    sort_names('./data/unsorted_names.txt', './data/sorted_names.txt')
